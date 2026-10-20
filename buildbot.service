@@ -1,0 +1,12 @@
+[Unit]
+Description=Telegram Android build bot
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/buildbot
+ExecStart=/usr/bin/python3 %h/buildbot/bot.py
+Restart=on-failure
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

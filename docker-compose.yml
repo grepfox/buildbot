@@ -1,0 +1,27 @@
+services:
+  buildbot:
+    build:
+      context: .
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+        USERNAME: ${USERNAME:-builder}
+    image: buildbot
+    container_name: buildbot
+    restart: unless-stopped
+    init: true                    # reap zombie build processes (bot is otherwise PID 1)
+    network_mode: host            # RBE + Telegram + Gofile, no port mapping needed
+    env_file: config.env
+    environment:
+      HOME: /home/${USERNAME:-builder}
+      TZ: Asia/Kolkata
+    ulimits:
+      nofile: { soft: 65536, hard: 65536 }
+    volumes:
+      # same paths inside as on the host
+      - ${SRC_DIR:-~/y}:/home/${USERNAME:-builder}/y
+      - ${SRC_DIR_L:-~/l}:/home/${USERNAME:-builder}/l
+      - .:/home/${USERNAME:-builder}/buildbot
+      # host resolv.conf lists Tailscale DNS first, which times out (8s per lookup)
+      - ./resolv.conf:/etc/resolv.conf:ro
+      - ${CCACHE_DIR:-~/.cache/ccache}:/home/${USERNAME:-builder}/.cache/ccache

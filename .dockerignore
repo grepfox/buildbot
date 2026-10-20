@@ -1,0 +1,6 @@
+logs/
+fake_out/
+__pycache__/
+*.log
+queue.json
+queue.json.tmp

@@ -1,0 +1,30 @@
+# Environment and configuration
+.env
+config.env
+
+# SSH keys and credentials
+.ssh/
+*.pem
+*.key
+id_*
+
+# Logs and runtime artifacts
+logs/
+*.log
+builds/
+fake_out/
+
+# State and queue files
+queue.json
+queue.json.tmp
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Editor and tool directories
+.claude/
+.vscode/
+.idea/

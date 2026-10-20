@@ -1,0 +1,96 @@
+{
+  "yaap": {
+    "vayu": {
+      "cwd": "~/y",
+      "cmd": [
+        "bash",
+        "b"
+      ],
+      "out_dir": "release-files",
+      "zip_glob": "YAAP-*.zip",
+      "variants": [
+        "Vanilla",
+        "Calypso"
+      ],
+      "variant_re": "YAAP_VERSION=[^-]+-([A-Za-z]+)-"
+    }
+  },
+  "lineage": {
+    "volkswagen": {
+      "cwd": "~/l",
+      "cmd": [
+        "bash",
+        "b"
+      ],
+      "out_dir": "out/target/product/volkswagen",
+      "zip_glob": "lineage-*.zip",
+      "extra_files": [
+        "init_boot.img",
+        "boot.img",
+        "vendor_boot.img",
+        "recovery.img",
+        "super_empty.img"
+      ]
+    },
+    "volkswagenc": {
+      "cwd": "~/l",
+      "cmd": [
+        "bash",
+        "b1"
+      ],
+      "out_dir": "out/target/product/volkswagenc",
+      "zip_glob": "lineage-*.zip",
+      "extra_files": [
+        "init_boot.img",
+        "boot.img",
+        "vendor_boot.img",
+        "recovery.img",
+        "super_empty.img"
+      ]
+    },
+    "lexus": {
+      "cwd": "~/l",
+      "cmd": [
+        "bash",
+        "b2"
+      ],
+      "out_dir": "out/target/product/lexus",
+      "zip_glob": "lineage-*.zip",
+      "extra_files": [
+        "init_boot.img",
+        "boot.img",
+        "vendor_boot.img",
+        "recovery.img",
+        "super_empty.img"
+      ]
+    }
+  },
+  "test": {
+    "fake": {
+      "cwd": "~/buildbot",
+      "cmd": [
+        "bash",
+        "fake_build.sh",
+        "TEST"
+      ],
+      "out_dir": "fake_out",
+      "zip_glob": "*.zip"
+    },
+    "dual": {
+      "cwd": "~/buildbot",
+      "cmd": [
+        "bash",
+        "fake_build.sh",
+        "Vanilla",
+        "Calypso"
+      ],
+      "out_dir": "fake_out",
+      "zip_glob": "*.zip",
+      "variants": [
+        "Vanilla",
+        "Calypso"
+      ],
+      "variant_re": "YAAP_VERSION=[^-]+-([A-Za-z]+)-"
+    }
+  }
+}
